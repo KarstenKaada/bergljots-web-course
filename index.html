@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <ul id="list">
+    </ul>
+
+<script>
+    function createPoint(name, amount) {
+        const list = document.getElementById("list");
+        const item = document.createElement("li");
+
+        item.innerHTML = "<h1>"+name+"</h1><h2>"+amount+"</h2>";
+        list.appendChild(item);
+    }
+
+    const url = "https://raw.githubusercontent.com/eirik1502/BbergljotsWebCourse/master/ingredients.json";
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            data.forEach(ingredient => createPoint(ingredient.name, ingredient.amount));
+        });
+</script>
+
+</body>
+</html>
